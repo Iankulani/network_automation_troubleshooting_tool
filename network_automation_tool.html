@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Network Automation Troubleshooting</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #results {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style></head><body>
+    <h1 style="margin-left: 200px; color: rgb(51, 102, 255);">Network Automation Troubleshooting Tool</h1>
+    <label for="issue">Select Issue:</label>
+    <select id="issue">
+        <option value="no_connection">No Connection</option>
+        <option value="slow_speed">Slow Internet Speed</option>
+        <option value="dns_issue">DNS Issues</option>
+        <option value="packet_loss">Packet Loss</option>
+    </select>
+    <button id="troubleshootBtn">Troubleshoot</button>
+    
+    <div id="results"></div>
+
+    <script>
+        document.getElementById('troubleshootBtn').addEventListener('click', function() {
+            const issue = document.getElementById('issue').value;
+            let resultsText = '';
+
+            switch (issue) {
+                case 'no_connection':
+                    resultsText = '1. Check if the router is powered on.<br>' +
+                                  '2. Ensure all cables are securely connected.<br>' +
+                                  '3. Restart your modem and router.';
+                    break;
+                case 'slow_speed':
+                    resultsText = '1. Check for bandwidth hogs on your network.<br>' +
+                                  '2. Move closer to the router.<br>' +
+                                  '3. Restart your modem and router.';
+                    break;
+                case 'dns_issue':
+                    resultsText = '1. Try flushing the DNS cache.<br>' +
+                                  '2. Use a different DNS server (e.g., Google DNS: 8.8.8.8).<br>' +
+                                  '3. Restart your device.';
+                    break;
+                case 'packet_loss':
+                    resultsText = '1. Check for network congestion.<br>' +
+                                  '2. Run a ping test to your router.<br>' +
+                                  '3. Check cables for damage.';
+                    break;
+                default:
+                    resultsText = 'Please select a valid issue.';
+            }
+
+            document.getElementById('results').innerHTML = resultsText;
+        });
+    </script>
+</body></html>
